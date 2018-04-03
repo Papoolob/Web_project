@@ -39,7 +39,7 @@
   <div class="center">
     <div class="form-item form-type-textfield form-group">
 <?php 
-    $key = isset($_POST['key']) ? $_POST['key'] : 0;
+    $key = isset($_GET['id']) ? $_GET['id'] : 0;
 
     var_dump($key);
 ?>
