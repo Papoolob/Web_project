@@ -279,7 +279,6 @@
       var http      = new XMLHttpRequest();
       var url       = "/EditData.php";
       var params    = "id="+id+"&key="+key+"&link="+link+"&comment="+comment;
-      // var params = "lorem=ipsum&name=binny";
       http.open("POST", url, true);
 
       http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -290,7 +289,7 @@
           }
       }
       http.send(params);
-      location.href='/EditData.php';
+      // location.href='/EditData.php';
 
     }
 

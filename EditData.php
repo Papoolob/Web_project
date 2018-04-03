@@ -81,20 +81,20 @@
 	  };
     firebase.initializeApp(config);
 	  
-     var id      = <?= $_POST['id']?>; 
-     var key     = <?= $_POST['key']?>; 
-     var link    = <?= $_POST['link']?>; 
-     var comment = <?= $_POST['comment']?>; 
+    var id      = '<?=isset($_POST['id']) ? $_POST['id'] : 0;?>'; 
+    var key     = '<?=isset($_POST['key']) ? $_POST['key'] : 0;?>'; 
+    var link    = '<?=isset($_POST['link']) ? $_POST['link'] : 0;?>'; 
+    var comment = '<?=isset($_POST['comment']) ? $_POST['comment'] : 0;?>'; 
 
     console.log(id);
     console.log(key);
     console.log(link);
     console.log(comment);
 
-    console.log(<?=$_POST['id']?>);
-    console.log(<?=$_POST['key']?>);
-    console.log(<?=$_POST['link']?>);
-    console.log(<?=$_POST['comment']?>);
+    console.log(<?php echo $_POST['id'];?>);
+    console.log(<?php echo  $_POST['key'];?>);
+    console.log(<?php echo $_POST['link'];?>);
+    console.log(<?php echo $_POST['comment'];?>);
 
     var insert_key      = document.getElementById('insert-key');
     var insert_link    = document.getElementById('insert-link');
