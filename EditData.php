@@ -84,8 +84,15 @@
 	  };
     firebase.initializeApp(config);
 	  
-    var id = '<?=isset($_POST['id']) ? $_POST['id'] : 0;?>'; 
+    var id      = '<?=isset($_POST['id']) ? $_POST['id'] : 0;?>'; 
+    var key     = '<?=isset($_POST['key']) ? $_POST['key'] : 0;?>'; 
+    var link    = '<?=isset($_POST['link']) ? $_POST['link'] : 0;?>'; 
+    var comment = '<?=isset($_POST['comment']) ? $_POST['comment'] : 0;?>'; 
+
     console.log(id);
+    console.log(key);
+    console.log(link);
+    console.log(comment);
 
     var data_all = firebase.database().ref();
     data_all.on("value", function (snapshot) {
@@ -113,10 +120,10 @@
     });
 
     console.log('<?=$_POST['id']?>');
-    console.log(key);
-    console.log(comment);
-    console.log(link);
-	  
+    console.log('<?=$_POST['key']?>');
+    console.log('<?=$_POST['link']?>');
+    console.log('<?=$_POST['comment']?>');
+
 	  
 	  
   </script>
