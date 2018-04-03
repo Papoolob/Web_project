@@ -56,7 +56,7 @@
         <button id="btn-insert" type="submit" class="btn btn-success">Insert</button>
       </div>
       <div class="col-sm-2">
-        <button type="reset" value="Reset" class="btn btn-warning">Reset</button>
+        <button id="btn-reset" type="reset" value="Reset" class="btn btn-warning">Reset</button>
       </div>
     </div>
 
@@ -109,6 +109,13 @@
     var insert_value    = document.getElementById('insert-value');
     var insert_comment  = document.getElementById('insert-comment');
     var data_array  = {};
+
+    document.getElementById('btn-reset').onclick = function () {
+      console.log("btn-reset");
+      insert_key.value      = "";
+      insert_value.value    = "";
+      insert_comment.value  = "";
+    };
 
     document.getElementById('btn-insert').onclick = function () {
 
@@ -240,37 +247,25 @@
 
     function edit_data(index,key,comment,link) {
 
-      console.log(index);
+      // console.log(index);
       var id = index.value;
-      console.log(id);
       console.log(data_array);
 
+      var key;
+      var link;
+      var comment;
+      var _keys = Object.keys(data_array);
+      console.log(_keys);
+      for (var i = 0; i < data_array.length; i++)
+      {
 
-      var data_all = firebase.database().ref();
-      data_all.on("value", function (snapshot) {
-        data = snapshot.val();
-        console.log(data);
-
-        var key;
-        var link;
-        var comment;
-        var _keys = Object.keys(data);
-        console.log(_keys);
-        for (var i = 0; i < _keys.length; i++)
-        {
-
-          if(id== _keys[i]){
-            console.log(id +" = "+_keys[i]);
-            key       = data[i].key;
-            comment   = data[i].comment;
-            link      = data[i].link;
-          }
+        if(id == i){
+          console.log(id +" = "+data_array[i]);
+          key       = data[i].key;
+          comment   = data[i].comment;
+          link      = data[i].link;
         }
-
-      }, function (error) { 
-        alert("Error: " + error.code);
-      });
-
+      }
 
       console.log("id : " + id);
       console.log("key : " + key);
