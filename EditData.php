@@ -81,10 +81,10 @@
 	  };
     firebase.initializeApp(config);
 	  
-    var id      = '<?=isset($_POST['id']) ? $_POST['id'] : 0;?>'; 
-    var key     = '<?=isset($_POST['key']) ? $_POST['key'] : 0;?>'; 
-    var link    = '<?=isset($_POST['link']) ? $_POST['link'] : 0;?>'; 
-    var comment = '<?=isset($_POST['comment']) ? $_POST['comment'] : 0;?>'; 
+     var id      = <?= $_POST['id']?>; 
+     var key     = <?= $_POST['key']?>; 
+     var link    = <?= $_POST['link']?>; 
+     var comment = <?= $_POST['comment']?>; 
 
     console.log(id);
     console.log(key);
