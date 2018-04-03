@@ -1,7 +1,7 @@
 <html>
 
 <head>
-  <title>Data management</title>
+  <title>1Data management</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -61,7 +61,7 @@
 
   </div>
   <div class="grid-result-data">
-    <div class="table-responsive-report" style="padding: 70px 15px 10px 15px;">
+    <div class="table-responsive-report" style="padding: 120px 0px 15px 10px 15px;">
       <table class="clickable table table-hover table-striped sticky-enabled tableheader-processed sticky-table">
         <thead>
           <tr>
@@ -103,12 +103,6 @@
     var insert_value = document.getElementById('insert-value');
     var insert_comment = document.getElementById('insert-comment');
 
-    document.getElementById('edit').onclick = function () {
-      // get id;
-      console.log("y");
-      // delete_data(id);
-
-    }
 
     document.getElementById('btn-insert').onclick = function () {
 
@@ -155,18 +149,20 @@
 
       console.log("-----------");
       console.log(num);
+      if (key != "" && value != "" && comment != "") {
+        if (num == 1) {
 
-      if (num == 1) {
+          alert("This key already exists.");
 
-        alert("ERROR");
+        } else {
 
-
-
-      } else {
-
-        insert_data(data_length, key, comment, value);
-        alert("Complete");
+          insert_data(data_length, key, comment, value);
+          alert("Save completed");
+        }
+      }else{
+        alert("Please enter a message.");
       }
+
 
 
 
@@ -204,7 +200,7 @@
           var c_operations = row.insertCell(4);
 
           var line = document.createElement("p"); // สร้าง icon แก้ไข กับ ลบ
-          line.innerHTML = "<a class='glyphicon glyphicon-pencil' id='edit' name='edit' value"+id+"></a>";
+          line.innerHTML = "<a class='glyphicon glyphicon-pencil' onclick='edit_data()' id='edit' name='edit' value="+id+"></a>";
           c_id.appendChild(document.createTextNode(id)); // เพิ่มข้อมูลลงในตารางแต่ละคอลัม
           c_key.appendChild(document.createTextNode(key));
           c_link.appendChild(document.createTextNode(link));
@@ -232,6 +228,12 @@
     }
 
     function edit_data() {
+
+      console.log("y");
+      var e_edit = document.getElementById("edit");
+      console.log(e_edit);
+      console.log(e_edit.id);
+      console.log(e_edit.value);
       // var write_Ref = ref("a"); // แก้ไข้ข้อมูลใน a ที่ index 0 เป็น 1
       // write_Ref.update ({
       //   "0" : 1
