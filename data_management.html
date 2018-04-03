@@ -209,7 +209,7 @@
 
           console.log(id+" = "+i)
           var line = document.createElement("p"); // สร้าง icon แก้ไข กับ ลบ
-          line.innerHTML = "<button class='btn btn-warning' id='edit"+id+"' name='edit' value='"+id+"' onclick='edit_data(this)'>Edit</button>";
+          line.innerHTML = "<button class='btn btn-warning' id='edit"+id+"' name='edit' value='"+i+"' onclick='edit_data(this)'>Edit</button>";
           c_id.appendChild(document.createTextNode(id)); // เพิ่มข้อมูลลงในตารางแต่ละคอลัม
           c_key.appendChild(document.createTextNode(key));
           c_link.appendChild(document.createTextNode(link));
@@ -239,10 +239,42 @@
     function edit_data(index) {
 
       console.log(index);
-      var e_edit = document.getElementById("edit").value;
-      console.log(e_edit);
+      console.log(index.value);
 
-      // console.log(e_edit.getAttribute('innerHTML'));
+      var http = new XMLHttpRequest();
+      var url = "https://powerful-meadow-62628.herokuapp.com/EditData.php";
+      var params = "id="+index.value;
+      // var params = "lorem=ipsum&name=binny";
+      http.open("POST", url, true);
+
+      http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+      http.onreadystatechange = function() {
+          if(http.readyState == 4 && http.status == 200) {
+              console.log(http.responseText);
+          }
+      }
+      http.send(params);
+
+
+      // var url = "http://www.google.com/";
+      // var method = "POST";
+      // var postData = "Some data";
+
+      // var shouldBeAsync = true;
+
+      // var request = new XMLHttpRequest();
+
+      // request.onload = function () {
+
+      //   var status = request.status;
+      //   var data = request.responseText; 
+      // }
+      // request.open(method, url, shouldBeAsync);
+
+      // request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+      // request.send(postData);
+
       
       // var write_Ref = ref("a"); // แก้ไข้ข้อมูลใน a ที่ index 0 เป็น 1
       // write_Ref.update ({
