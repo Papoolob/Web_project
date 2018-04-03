@@ -45,8 +45,6 @@
 
     var_dump($key);
 ?>
-      <!-- <form action="Line_master.php" class="form-horizontal" method="post">
-        <fieldset> -->
       <div>
         <label class="control-label" for="edit-key">Key
         </label>
@@ -71,9 +69,8 @@
         <div>
           <button id="btn-save" type="submit" class="btn btn-success">Save</button>
         </div>
-        <!-- </fieldset>
-      </form> -->
-    </div>
+      </div>
+
   </div>
   </div>
   <script>
@@ -88,8 +85,37 @@
     firebase.initializeApp(config);
 	  
 	  var id = '<?=$_POST['id']?>';
+    console.log('<?=$_POST['id']?>');
+
+    firebase.database().ref.on("value", function (snapshot) {
+      data = snapshot.val();
+      console.log(data);
+
+      var key;
+      var link;
+      var comment;
+      var _keys = Object.keys(data);
+      console.log(_keys);
+      for (var i = 0; i < _keys.length; i++)
+      {
+
+        if('<?=$_POST['id']?>' == _keys[i]){
+          console.log('<?=$_POST['id']?>'+" = "+_keys[i]);
+          key       = data[i].key;
+          comment   = data[i].comment;
+          link      = data[i].link;
+        }
+      }
+
+    }, function (error) { 
+      alert("Error: " + error.code);
+    });
+
+    console.log('<?=$_POST['id']?>');
+    console.log(key);
+    console.log(comment);
+    console.log(link);
 	  
-	  console.log(id);
 	  
 	  
   </script>
