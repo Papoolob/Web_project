@@ -86,10 +86,10 @@
     var link    = '<?=isset($_POST['link']) ? $_POST['link'] : 0;?>'; 
     var comment = '<?=isset($_POST['comment']) ? $_POST['comment'] : 0;?>'; 
 
-    console,log(id);
-    console,log(key);
-    console,log(link);
-    console,log(comment);
+    console.log(id);
+    console.log(key);
+    console.log(link);
+    console.log(comment);
 
     console.log(<?=$_POST['id']?>);
     console.log(<?=$_POST['key']?>);
