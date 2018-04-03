@@ -108,7 +108,8 @@
     var insert_key      = document.getElementById('insert-key');
     var insert_value    = document.getElementById('insert-value');
     var insert_comment  = document.getElementById('insert-comment');
-    var data_array  = {};
+    // var data_array  = {};
+    var data        = {};
 
     document.getElementById('btn-reset').onclick = function () {
       console.log("btn-reset");
@@ -184,7 +185,7 @@
     function display_data() {
       var ref         = firebase.database().ref();
       
-      var data        = {};
+      
       var tbId        = document.getElementById('table-list');
       var key         = {};
 
@@ -249,18 +250,18 @@
 
       // console.log(index);
       var id = index.value;
-      console.log(data_array);
+      console.log(data);
 
       var key;
       var link;
       var comment;
-      var _keys = Object.keys(data_array);
+      var _keys = Object.keys(data);
       console.log(_keys);
-      for (var i = 0; i < data_array.length; i++)
+      for (var i = 0; i < data.length; i++)
       {
 
         if(id == i){
-          console.log(id +" = "+data_array[i]);
+          console.log(id +" = "+i);
           key       = data[i].key;
           comment   = data[i].comment;
           link      = data[i].link;
