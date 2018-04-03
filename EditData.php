@@ -89,35 +89,6 @@
     var link    = '<?=isset($_POST['link']) ? $_POST['link'] : 0;?>'; 
     var comment = '<?=isset($_POST['comment']) ? $_POST['comment'] : 0;?>'; 
 
-    console.log(id);
-    console.log(key);
-    console.log(link);
-    console.log(comment);
-
-    var data_all = firebase.database().ref();
-    data_all.on("value", function (snapshot) {
-      data = snapshot.val();
-      console.log(data);
-
-      var key;
-      var link;
-      var comment;
-      var _keys = Object.keys(data);
-      console.log(_keys);
-      for (var i = 0; i < _keys.length; i++)
-      {
-
-        if('<?=$_POST['id']?>' == _keys[i]){
-          console.log('<?=$_POST['id']?>'+" = "+_keys[i]);
-          key       = data[i].key;
-          comment   = data[i].comment;
-          link      = data[i].link;
-        }
-      }
-
-    }, function (error) { 
-      alert("Error: " + error.code);
-    });
 
     console.log('<?=$_POST['id']?>');
     console.log('<?=$_POST['key']?>');
