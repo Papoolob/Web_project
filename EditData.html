@@ -1,0 +1,99 @@
+<html> 
+<head> 
+<title>Data management</title>  
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<style>
+  table {
+      border-collapse: collapse;
+      width: 100%;
+  }
+  th, td {
+      text-align: left;
+      padding: 8px;
+  }
+  tr:nth-child(even){background-color: #f2f2f2}
+  th {
+      background-color: #003366;
+      color: white;   
+  }
+  
+</style>
+</head>  
+	<body> 
+    <header class="header">   
+    <div class="container-fluid">
+      <h1>Data management</h1>
+    </div>
+    </header>
+    <div class="form-item form-type-textfield form-group">  
+      <div class="col-sm-4">
+        <label class="control-label" for="edit-key">Key</label> 
+        <input class="form-control form-text" type="text" id="insert-key" name="key"  size="60" maxlength="255" placeholder="Type it here">
+      </div>
+      <div class="col-sm-4">
+        <label class="control-label" for="edit-key">Value</label> 
+        <input class="form-control form-text" type="text" id="insert-value" name="value" size="60" maxlength="255" placeholder="Type it here">
+      </div>
+      <div class="col-sm-4">
+        <label class="control-label" for="edit-key">Comment</label> 
+        <input class="form-control form-text" type="text" id="insert-comment" name="comment" size="60" maxlength="255" placeholder="Type it here">
+      </div>
+      <div class="col-sm-4" style="padding-top: 25px">
+        <div class="col-sm-2"><button id="btn-save" type="submit" class="btn btn-success" >Save</button></div>
+      
+      </div>
+
+    </div>
+    
+    
+    <script> 
+    
+        // comfig เชื่อมต่อ web กับ firebase
+        // Initialize Firebase
+        var config = {
+          apiKey: "AIzaSyBCXvufpin_C3BrQCio1ZT7MihqnZuciN0",
+          authDomain: "ksbot-test.firebaseapp.com",
+          databaseURL: "https://ksbot-test.firebaseio.com",
+          projectId: "ksbot-test",
+          storageBucket: "ksbot-test.appspot.com",
+          messagingSenderId: "371500888649"
+        };
+        firebase.initializeApp(config);
+              display_data();
+
+          function display_data()
+          {
+            var ref = firebase.database().ref();
+            var data_array = [];
+            var data = {};
+            var tbId = document.getElementById('table-list');
+            var key = {};
+
+
+            // อ่านค่าและแสดงผลในตางรางจาก filebase
+            ref.on("value", function(snapshot) 
+            { 
+              data = snapshot.val(); // เก็บข้อมูลที่ได้จาก firebase ไว้ที่ตัวแปร data
+              var id;
+              var key;  
+              var link; 
+              var comment;  
+
+            });
+          }
+
+
+          function edit_data()
+          {
+            // var write_Ref = ref("a"); // แก้ไข้ข้อมูลใน a ที่ index 0 เป็น 1
+            // write_Ref.update ({
+            //   "0" : 1
+            // });
+      
+	    
+    </script>
+  </body>  
+</html> 
