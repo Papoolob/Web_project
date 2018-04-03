@@ -84,10 +84,11 @@
 	  };
     firebase.initializeApp(config);
 	  
-	  var id = '<?=$_POST['id']?>';
-    console.log('<?=$_POST['id']?>');
+    var id = '<?=isset($_POST['id']) ? $_POST['id'] : 0;?>'; 
+    console.log(id);
 
-    firebase.database().ref.on("value", function (snapshot) {
+    var data_all = firebase.database().ref();
+    data_all.on("value", function (snapshot) {
       data = snapshot.val();
       console.log(data);
 
