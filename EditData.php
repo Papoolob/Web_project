@@ -95,6 +95,15 @@
     console.log('<?=$_POST['link']?>');
     console.log('<?=$_POST['comment']?>');
 
+
+            // ดึง id ที่เลือกมาจาก tabel และค่าที่ต้องการ อัพเดต ทำการอัพเดตข้อมูล
+        // var write_Ref = ref(id); // แก้ไข้ข้อมูลใน a ที่ index 0 เป็น 1
+        // write_Ref.update ({
+        //   "key" : 1
+        //   "comment":1
+        //   "link":1
+        // });
+
 	  
 	  
   </script>
