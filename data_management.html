@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Data management</title>
+  <title>1Data management</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -118,6 +118,7 @@
       insert_key.value        = "";
       insert_value.value      = "";
       insert_comment.value    = "";
+
       console.log("insert_key : "     + key);
       console.log("insert_value : "   + value);
       console.log("insert_comment: "  + comment);
@@ -155,7 +156,7 @@
 
       }
 
-      console.log("-----------");
+      // console.log("-----------");
       console.log(num);
       if (key != "" && value != "" && comment != "") {
         if (num == 1) {
@@ -196,16 +197,16 @@
           key       = data[i].key;
           comment   = data[i].comment;
           link      = data[i].link;
-          var row   = tbId.insertRow(i); // กำหนดตัวแปรแทนตัวแต่ละคอลัม
+          var row   = tbId.insertRow(i); 
           var c_id  = row.insertCell(0);
           var c_key = row.insertCell(1);
           var c_link        = row.insertCell(2);
           var c_comment     = row.insertCell(3);
           var c_operations  = row.insertCell(4);
 
-          var line        = document.createElement("p"); // สร้าง icon แก้ไข กับ ลบ
+          var line        = document.createElement("p"); 
           line.innerHTML  = "<button class='btn btn-warning' id='edit"+id+"' name='edit' value='"+i+"' onclick='edit_data(this)'>Edit</button>";
-          c_id.appendChild(document.createTextNode(id)); // เพิ่มข้อมูลลงในตารางแต่ละคอลัม
+          c_id.appendChild(document.createTextNode(id)); 
           c_key.appendChild(document.createTextNode(key));
           c_link.appendChild(document.createTextNode(link));
           c_comment.appendChild(document.createTextNode(comment));
@@ -250,7 +251,7 @@
           }
       }
       http.send(params);
-      location.href='/Edit.php';
+      location.href='/EditData.php';
 
     }
 
