@@ -5,6 +5,8 @@
   </title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
   <style>
     table {
       border-collapse: collapse;
@@ -39,7 +41,7 @@
   <div class="center">
     <div class="form-item form-type-textfield form-group">
 <?php 
-    $key = isset($_GET['id']) ? $_GET['id'] : 0;
+    $key = isset($_POST['id']) ? $_POST['id'] : 0;
 
     var_dump($key);
 ?>
@@ -84,6 +86,12 @@
 	    messagingSenderId: "371500888649"
 	  };
     firebase.initializeApp(config);
+	  
+	  var id = '<?=$_POST['id']?>';
+	  
+	  console.log(id);
+	  
+	  
   </script>
 
 </body>
