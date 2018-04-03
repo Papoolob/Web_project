@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>1Data management</title>
+  <title>2Data management</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -104,9 +104,6 @@
     firebase.initializeApp(config);
 
     display_data();
-    var s_key;
-    var s_link;
-    var s_comment;
     var insert_key      = document.getElementById('insert-key');
     var insert_value    = document.getElementById('insert-value');
     var insert_comment  = document.getElementById('insert-comment');
@@ -200,12 +197,6 @@
           key       = data[i].key;
           comment   = data[i].comment;
           link      = data[i].link;
-//-------------------
-          s_key     = key;
-          s_link    = link;
-          s_comment = comment;
-//-------------------
-
 
           var row   = tbId.insertRow(i); 
           var c_id  = row.insertCell(0);
@@ -215,7 +206,7 @@
           var c_operations  = row.insertCell(4);
 
           var line        = document.createElement("p"); 
-          line.innerHTML  = "<button class='btn btn-warning' id='edit"+id+"' name='edit' value='"+i+"' onclick='set_data(this)'>Edit</button>";
+          line.innerHTML  = "<button class='btn btn-warning' id='edit"+id+"' name='edit[]' value='"+array(i,key,link,comment)+"' onclick='edit_data(this)'>Edit</button>";
           c_id.appendChild(document.createTextNode(id)); 
           c_key.appendChild(document.createTextNode(key));
           c_link.appendChild(document.createTextNode(link));
@@ -228,14 +219,6 @@
       });
     }
 
-    function set_data(id){
-
-      console.log(id);
-      console.log(s_key);
-      console.log(s_link);
-      console.log(s_comment);
-      // edit_data(index,s_key,s_comment,s_link);
-    }
 
     function insert_data(data_length, key, comment, value) {
       console.log("length : " + data_length);
@@ -256,21 +239,21 @@
       console.log(index);
       console.log(index.value);
 
-      var http      = new XMLHttpRequest();
-      var url       = "/EditData.php";
-      var params    = "id="+index.value+"&key="+key+"&link="+link+"&comment="+comment;
-      // var params = "lorem=ipsum&name=binny";
-      http.open("POST", url, true);
+      // var http      = new XMLHttpRequest();
+      // var url       = "/EditData.php";
+      // var params    = "id="+index.value+"&key="+key+"&link="+link+"&comment="+comment;
+      // // var params = "lorem=ipsum&name=binny";
+      // http.open("POST", url, true);
 
-      http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      // http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-      http.onreadystatechange = function() {
-          if(http.readyState == 4 && http.status == 200) {
-              console.log(http.responseText);
-          }
-      }
-      http.send(params);
-      // location.href='/EditData.php';
+      // http.onreadystatechange = function() {
+      //     if(http.readyState == 4 && http.status == 200) {
+      //         console.log(http.responseText);
+      //     }
+      // }
+      // http.send(params);
+      // // location.href='/EditData.php';
 
     }
 
