@@ -3,8 +3,10 @@
 <head>
   <title>Edit Data
   </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
   <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
   <style>
@@ -40,11 +42,6 @@
 
   <div class="center">
     <div class="form-item form-type-textfield form-group">
-<?php 
-    $key = isset($_POST['id']) ? $_POST['id'] : 0;
-
-    var_dump($key);
-?>
       <div>
         <label class="control-label" for="edit-key">Key
         </label>
@@ -52,9 +49,9 @@
       </div>
 
       <div>
-        <label class="control-label" for="edit-key">Value
+        <label class="control-label" for="edit-key">Link
         </label>
-        <textarea rows="4" cols="50" class="form-control form-text" type="text" id="insert-value" name="value" size="40" maxlength="255"
+        <textarea rows="4" cols="50" class="form-control form-text" type="text" id="insert-link" name="value" size="40" maxlength="255"
           placeholder="Type it here"></textarea>
       </div>
 
@@ -95,14 +92,19 @@
     console.log('<?=$_POST['link']?>');
     console.log('<?=$_POST['comment']?>');
 
+    var insert_key      = document.getElementById('insert-key');
+    var insert_link    = document.getElementById('insert-link');
+    var insert_comment  = document.getElementById('insert-comment');
 
-            // ดึง id ที่เลือกมาจาก tabel และค่าที่ต้องการ อัพเดต ทำการอัพเดตข้อมูล
-        // var write_Ref = ref(id); // แก้ไข้ข้อมูลใน a ที่ index 0 เป็น 1
-        // write_Ref.update ({
-        //   "key" : 1
-        //   "comment":1
-        //   "link":1
-        // });
+    insert_key.value      = key;
+    insert_link.value     = link;
+    insert_comment.value  = comment;
+
+    // firebase.database().ref(id).update ({
+    //   "key"     : key,
+    //   "comment" : comment,
+    //   "link"    : link
+    // });
 
 	  
 	  
