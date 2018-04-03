@@ -104,6 +104,9 @@
     firebase.initializeApp(config);
 
     display_data();
+    var s_key;
+    var s_link;
+    var s_comment;
     var insert_key      = document.getElementById('insert-key');
     var insert_value    = document.getElementById('insert-value');
     var insert_comment  = document.getElementById('insert-comment');
@@ -197,6 +200,13 @@
           key       = data[i].key;
           comment   = data[i].comment;
           link      = data[i].link;
+//-------------------
+          s_key     = key;
+          s_link    = link;
+          s_comment = comment;
+//-------------------
+
+
           var row   = tbId.insertRow(i); 
           var c_id  = row.insertCell(0);
           var c_key = row.insertCell(1);
@@ -205,7 +215,7 @@
           var c_operations  = row.insertCell(4);
 
           var line        = document.createElement("p"); 
-          line.innerHTML  = "<button class='btn btn-warning' id='edit"+id+"' name='edit' value='"+i+"' onclick='edit_data(this,"+key.substring(0)+","+comment.substring(0)+","+link.substring(0)+")'>Edit</button>";
+          line.innerHTML  = "<button class='btn btn-warning' id='edit"+id+"' name='edit' value='"+i+"' onclick='set_data(this)'>Edit</button>";
           c_id.appendChild(document.createTextNode(id)); 
           c_key.appendChild(document.createTextNode(key));
           c_link.appendChild(document.createTextNode(link));
@@ -216,6 +226,15 @@
       }, function (error) { // ถ้าเกิด error จากการดึงข้อมูลจะแสดง alert ออกมา
         alert("Error: " + error.code);
       });
+    }
+
+    function set_data(id){
+
+      console.log(id);
+      console.log(s_key);
+      console.log(s_link);
+      console.log(s_comment);
+      // edit_data(index,s_key,s_comment,s_link);
     }
 
     function insert_data(data_length, key, comment, value) {
